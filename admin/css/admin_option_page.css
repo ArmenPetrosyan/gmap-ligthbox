@@ -32,10 +32,18 @@
 	margin-top: 10%;
 	width: 40%;
 	height: 60%;
-	background: #000;
+	background: #acf;
 	border: 10px solid #fff;
 	border-radius: 5px;
 	overflow: visible !important;
+}
+
+.gmap-window .gmap-canvas{
+	position: absolute;
+	top:0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 }
 
 .gmap-window_closeBtn{

@@ -10,32 +10,28 @@
 	      { title:"F", latitude:46.970447, longitude:31.99153720000004 },
 	    ];
 
-	   	var canvas_arr = this;
+		this.each(function(){	
+			var e = $(this);
+			function initialize() {
+					var myLatlng = new google.maps.LatLng(MARKERS[0].latitude, MARKERS[0].longitude);
+				  	var mapOptions = {
+				  	  	zoom: 14,
+				  	  	center: myLatlng
+				  	}
+				  	console.log(e)
+				  	var map = new google.maps.Map(e[0], mapOptions);
+					
+					for(i in MARKERS){
+					    var marker = new google.maps.Marker({
+					        position: new google.maps.LatLng(MARKERS[i].latitude, MARKERS[i].longitude),
+					        map: map,
+					        title: MARKERS[i].title
+					    });
+				  	}
+			};
 
-		function initialize() {
-			canvas_arr.each(function(){
-				var myLatlng = new google.maps.LatLng(MARKERS[0].latitude, MARKERS[0].longitude);
-			  	var mapOptions = {
-			  	  	zoom: 14,
-			  	  	center: myLatlng
-			  	}
-
-			  	var map = new google.maps.Map($(this)[0], mapOptions);
-				
-				for(i in MARKERS){
-				    var marker = new google.maps.Marker({
-				        position: new google.maps.LatLng(MARKERS[i].latitude, MARKERS[i].longitude),
-				        map: map,
-				        title: MARKERS[i].title
-				    });
-			  	}
-			});
-		};
-
-		// google.maps.event.addDomListener(window, 'load', initialize);
-		this.ready(initialize).resize();
-		// initialize();
-
+			setTimeout(initialize,300);
+		});
 		return this;
 	}
 })(jQuery);

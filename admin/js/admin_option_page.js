@@ -7,14 +7,15 @@
 				.appendTo('body');
 
 			var closeBtn = $('<div>',{'class':'gmap-window_closeBtn'});
+			var gmap_canvas = $('<div>',{'class':'gmap-canvas'});
 
 			var gmap_window = $('<div>',{'class':'gmap-window'})
-				.gmap()
 				.appendTo(overlay)
 				.hide()
-				.slideDown()
-				.prepend(closeBtn);
-			
+				.append(gmap_canvas)
+				.append(closeBtn)
+				.slideDown();
+			gmap_canvas.gmap();
 		});
 
 	$('body').on('click','.gmap-window_closeBtn',function(){
