@@ -11,7 +11,17 @@
 	register_activation_hook(__FILE__,'gmap_activation');
 	register_deactivation_hook(__FILE__,'gmap_deactivation');
 
+	global $wpdb;
+	$table = 'gmap_data';
+
 	function gmap_builder(){
+		global $wpdb,$table;
+
+		$res = $wpdb->query(
+			"CREATE TABLE IF NOT EXISTS ".$wpdb->prefix.$table."(id INT AUTO_INCREMENT, title TEXT, longitude DOUBLE NOT NULL, lattitude DOUBLE NOT NULL, PRIMARY KEY(id))"
+		);
+
+		// echo +$res." ".$wpdb->last_error;
 	}
 
 	function gmap_init(){
@@ -25,7 +35,7 @@
 	}
 
 	function gmap_activation(){
-		add_option( 'gmap_activated', true );
+		add_option('gmap_activated', true );
 	}
 
 	function gmap_deactivation(){
