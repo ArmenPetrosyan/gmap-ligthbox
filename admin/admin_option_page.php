@@ -11,8 +11,6 @@ function gmap_admin_page(){
 }
 
 function gmap_create_menu(){
-	wp_enqueue_script('gmap','//maps.googleapis.com/maps/api/js?v=3.exp');
-	wp_enqueue_script('gmapEngine',plugins_url().'/gmap-lightbox/js/maps.engine.js');
 
 	wp_enqueue_style( 'gmap_option_style', plugin_dir_url(__FILE__).'css/admin_option_page.css');
 	wp_enqueue_script( 'gmap_option_script', plugin_dir_url(__FILE__).'js/admin_option_page.js',array('gmap'));

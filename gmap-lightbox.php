@@ -8,8 +8,12 @@
 	License: GPLv2 or later
 */
 
+	// require_once(dirname(__FILE__).'gmap-db.php');
+
 	register_activation_hook(__FILE__,'gmap_activation');
 	register_deactivation_hook(__FILE__,'gmap_deactivation');
+	wp_enqueue_script('gmap','//maps.googleapis.com/maps/api/js?v=3.exp');
+	wp_enqueue_script('gmapEngine',plugin_dir_url(__FILE__).'js/maps.engine.js');
 
 	global $wpdb;
 	$table = 'gmap_data';
@@ -21,7 +25,9 @@
 			"CREATE TABLE IF NOT EXISTS ".$wpdb->prefix.$table."(id INT AUTO_INCREMENT, title TEXT, longitude DOUBLE NOT NULL, lattitude DOUBLE NOT NULL, PRIMARY KEY(id))"
 		);
 
-		// echo +$res." ".$wpdb->last_error;
+		// $test = GmapDB::getCoordinates();
+
+		// print_r($test);
 	}
 
 	function gmap_init(){
